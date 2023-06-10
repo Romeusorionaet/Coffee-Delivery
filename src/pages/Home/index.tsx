@@ -1,3 +1,12 @@
+import { MenuCoffee } from '../../components/MenuCoffee'
+
 export function Home() {
-  return <h1>Home</h1>
+  return (
+    <div>
+      <hr />
+      <h1>Home</h1>
+
+      <MenuCoffee />
+    </div>
+  )
 }
