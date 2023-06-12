@@ -9,14 +9,17 @@ export interface CoffeeProps {
   img: string
   title: string
   description: string
-  price: string
-  coffeeQuantity?: number
+  price: number
+  coffeeQuantity: number
 }
 
 interface CoffeContextType {
   addCoffeeToCart: (coffee: CoffeeProps) => void
   removeCoffeeFromCart: (id: string) => void
   orderCoffee: CoffeeProps[]
+
+  handleMoreCoffee: (id: string) => void
+  handleLessCoffee: (id: string) => void
 }
 
 export const CoffeeOfContext = createContext({} as CoffeContextType)
@@ -28,6 +31,7 @@ export function CoffeeDeliveryContext({
     (state: CoffeeProps[], action: any) => {
       if (action.type === 'ADD_NEW_COFFEE') {
         const { id, coffeeQuantity } = action.payload.data
+        localStorage.setItem('@coffeeDeliveryCart-1.0', JSON.stringify(state))
 
         const existingCoffee = state.findIndex((item) => item.id === id)
 
@@ -56,6 +60,51 @@ export function CoffeeDeliveryContext({
 
         return listOfCoffeeWithoutDeleteOne
       }
+
+      if (action.type === 'INCREMENT') {
+        const { id } = action.payload.data
+
+        const coffeeFound = state.findIndex((item) => item.id === id)
+
+        if (coffeeFound !== -1) {
+          const updatedCoffeeQuantity = {
+            ...state[coffeeFound],
+            coffeeQuantity: state[coffeeFound].coffeeQuantity + 1,
+          }
+
+          const newQuantityOfCoffee = [...state]
+          newQuantityOfCoffee[coffeeFound] = updatedCoffeeQuantity
+
+          return newQuantityOfCoffee
+        } else {
+          return [...state, action.payload.data]
+        }
+      }
+
+      if (action.type === 'DECREMENT') {
+        const { id } = action.payload.data
+
+        const coffeeFound = state.findIndex((item) => item.id === id)
+
+        if (coffeeFound !== -1) {
+          const updatedCoffeeQuantity = {
+            ...state[coffeeFound],
+            coffeeQuantity:
+              state[coffeeFound].coffeeQuantity > 1
+                ? state[coffeeFound].coffeeQuantity - 1
+                : state[coffeeFound].coffeeQuantity,
+          }
+
+          const newQuantityOfCoffee = [...state]
+          newQuantityOfCoffee[coffeeFound] = updatedCoffeeQuantity
+
+          return newQuantityOfCoffee
+        } else {
+          return [...state, action.payload.data]
+        }
+      }
+      // stoped here...
+      // const transformListSaved = localStorage.getItem('@coffeeDeliveryCart-1.0')
       return state
     },
     [],
@@ -86,12 +135,32 @@ export function CoffeeDeliveryContext({
     })
   }
 
+  function handleMoreCoffee(id: string) {
+    dispatch({
+      type: 'INCREMENT',
+      payload: {
+        data: { id },
+      },
+    })
+  }
+
+  function handleLessCoffee(id: string) {
+    dispatch({
+      type: 'DECREMENT',
+      payload: {
+        data: { id },
+      },
+    })
+  }
+
   return (
     <CoffeeOfContext.Provider
       value={{
         addCoffeeToCart,
         orderCoffee,
         removeCoffeeFromCart,
+        handleMoreCoffee,
+        handleLessCoffee,
       }}
     >
       {children}

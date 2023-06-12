@@ -36,6 +36,8 @@ export function Coffee({ id, img, title, description, price }: CoffeeProps) {
             <button onClick={handleMoreCoffee}>Mais</button>
           </div>
 
+          <span>{price}</span>
+
           <button onClick={handleAddToCart}>Adicionar no carrinho</button>
         </div>
       </div>

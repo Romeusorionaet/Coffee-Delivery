@@ -8,7 +8,7 @@ export const listOfAllCoffee = [
     img: ExpressoTradicional,
     title: 'Expresso Tradicional',
     description: 'Descrição do café tradicional',
-    price: '9,90',
+    price: 9.89,
   },
 
   {
@@ -16,6 +16,6 @@ export const listOfAllCoffee = [
     img: ExpressoAmericano,
     title: 'Expresso Americano',
     description: 'Descrição do café americano',
-    price: '5,90',
+    price: 5.59,
   },
 ]
