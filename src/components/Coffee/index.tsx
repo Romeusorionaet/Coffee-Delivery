@@ -1,28 +1,22 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import {
   CoffeeOfContext,
   CoffeeProps,
 } from '../../contexts/CoffeeDeliveryContext'
 
 export function Coffee({ id, img, title, description, price }: CoffeeProps) {
-  const {
-    addCoffeeToCart,
-    coffeeQuantity,
-    handleLessCoffee,
-    handleMoreCoffee,
-  } = useContext(CoffeeOfContext)
+  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(1)
+  const { addCoffeeToCart } = useContext(CoffeeOfContext)
 
-  // const [coffeeQuantity, setCoffeeQuantity] = useState<number>(1)
+  const handleMoreCoffee = () => {
+    setCoffeeQuantity((state) => state + 1)
+  }
 
-  // function handleMoreCoffee() {
-  //   setCoffeeQuantity((state) => state + 1)
-  // }
-
-  // function handleLessCoffee() {
-  //   if (coffeeQuantity > 1) {
-  //     setCoffeeQuantity((state: number) => state - 1)
-  //   }
-  // }
+  function handleLessCoffee() {
+    if (coffeeQuantity > 1) {
+      setCoffeeQuantity((state: number) => state - 1)
+    }
+  }
 
   function handleAddToCart() {
     addCoffeeToCart({ id, img, title, description, coffeeQuantity, price })

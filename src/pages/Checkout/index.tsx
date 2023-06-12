@@ -2,8 +2,8 @@ import { useContext, useState } from 'react'
 import { CoffeeOfContext } from '../../contexts/CoffeeDeliveryContext'
 
 export function Checkout() {
-  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(1)
-  const { orderCoffee } = useContext(CoffeeOfContext)
+  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(0)
+  const { orderCoffee, removeCoffeeFromCart } = useContext(CoffeeOfContext)
 
   function handleMoreCoffee() {
     setCoffeeQuantity((state) => state + 1)
@@ -11,7 +11,7 @@ export function Checkout() {
 
   function handleLessCoffee() {
     if (coffeeQuantity > 1) {
-      setCoffeeQuantity((state: number) => state - 1)
+      setCoffeeQuantity((state) => state - 1)
     }
   }
 
@@ -31,6 +31,10 @@ export function Checkout() {
                 <span>{item.coffeeQuantity}</span>
                 <button onClick={handleMoreCoffee}>Mais</button>
               </div>
+
+              <button onClick={() => removeCoffeeFromCart(item.id)}>
+                Remover
+              </button>
             </div>
           )
         })}

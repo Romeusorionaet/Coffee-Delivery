@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useReducer, useState } from 'react'
+import { ReactNode, createContext, useReducer } from 'react'
 
 interface CoffeeContextProviderProps {
   children: ReactNode
@@ -10,15 +10,13 @@ export interface CoffeeProps {
   title: string
   description: string
   price: string
-  coffeeQuantity: number
+  coffeeQuantity?: number
 }
 
 interface CoffeContextType {
   addCoffeeToCart: (coffee: CoffeeProps) => void
+  removeCoffeeFromCart: (id: string) => void
   orderCoffee: CoffeeProps[]
-  handleMoreCoffee: () => void
-  handleLessCoffee: () => void
-  coffeeQuantity: number
 }
 
 export const CoffeeOfContext = createContext({} as CoffeContextType)
@@ -31,7 +29,7 @@ export function CoffeeDeliveryContext({
       if (action.type === 'ADD_NEW_COFFEE') {
         const { id, coffeeQuantity } = action.payload.data
 
-        const existingCoffee = state.findIndex((coffee) => coffee.id === id)
+        const existingCoffee = state.findIndex((item) => item.id === id)
 
         if (existingCoffee !== -1) {
           const updatedCoffee = {
@@ -48,26 +46,20 @@ export function CoffeeDeliveryContext({
           return [...state, action.payload.data]
         }
       }
+
+      if (action.type === 'REMOVE_COFFEE_FROM_CART') {
+        const { id } = action.payload.data
+
+        const listOfCoffeeWithoutDeleteOne = state.filter((item) => {
+          return item.id !== id
+        })
+
+        return listOfCoffeeWithoutDeleteOne
+      }
       return state
     },
     [],
   )
-
-  const [coffeeQuantity, setCoffeeQuantity] = useState<number>(1)
-
-  function handleMoreCoffee() {
-    setCoffeeQuantity((state) => state + 1)
-  }
-
-  function handleLessCoffee() {
-    if (coffeeQuantity > 1) {
-      setCoffeeQuantity((state: number) => state - 1)
-    }
-  }
-
-  // if (orderCoffee.length !== 0) {
-  //   localStorage.setItem('@coffeeDeliveryCart-1.0', JSON.stringify(orderCoffee))
-  // }
 
   function addCoffeeToCart({
     id,
@@ -85,14 +77,21 @@ export function CoffeeDeliveryContext({
     })
   }
 
+  function removeCoffeeFromCart(id: string) {
+    dispatch({
+      type: 'REMOVE_COFFEE_FROM_CART',
+      payload: {
+        data: { id },
+      },
+    })
+  }
+
   return (
     <CoffeeOfContext.Provider
       value={{
         addCoffeeToCart,
         orderCoffee,
-        handleMoreCoffee,
-        handleLessCoffee,
-        coffeeQuantity,
+        removeCoffeeFromCart,
       }}
     >
       {children}
