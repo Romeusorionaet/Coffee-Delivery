@@ -5,7 +5,7 @@ interface CoffeeContextProviderProps {
 }
 
 export interface CoffeeProps {
-  id: string
+  id: number
   img: string
   title: string
   description: string
@@ -15,11 +15,11 @@ export interface CoffeeProps {
 
 interface CoffeContextType {
   addCoffeeToCart: (coffee: CoffeeProps) => void
-  removeCoffeeFromCart: (id: string) => void
+  removeCoffeeFromCart: (id: number) => void
   orderCoffee: CoffeeProps[]
 
-  handleMoreCoffee: (id: string) => void
-  handleLessCoffee: (id: string) => void
+  handleMoreCoffee: (id: number) => void
+  handleLessCoffee: (id: number) => void
 }
 
 export const CoffeeOfContext = createContext({} as CoffeContextType)
@@ -46,11 +46,15 @@ export function CoffeeDeliveryContext({
 
           localStorage.setItem(
             '@coffeeDeliveryCart-1.0',
-            JSON.stringify(action.payload.data),
+            JSON.stringify(updatedOrderCoffee),
           )
 
           return updatedOrderCoffee
         } else {
+          localStorage.setItem(
+            '@coffeeDeliveryCart-1.0',
+            JSON.stringify([...state, action.payload.data]),
+          )
           return [...state, action.payload.data]
         }
       }
@@ -146,7 +150,7 @@ export function CoffeeDeliveryContext({
     })
   }
 
-  function removeCoffeeFromCart(id: string) {
+  function removeCoffeeFromCart(id: number) {
     dispatch({
       type: 'REMOVE_COFFEE_FROM_CART',
       payload: {
@@ -155,7 +159,7 @@ export function CoffeeDeliveryContext({
     })
   }
 
-  function handleMoreCoffee(id: string) {
+  function handleMoreCoffee(id: number) {
     dispatch({
       type: 'INCREMENT',
       payload: {
@@ -164,7 +168,7 @@ export function CoffeeDeliveryContext({
     })
   }
 
-  function handleLessCoffee(id: string) {
+  function handleLessCoffee(id: number) {
     dispatch({
       type: 'DECREMENT',
       payload: {

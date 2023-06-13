@@ -1,10 +1,9 @@
 import ExpressoTradicional from '../assets/coffee/Expresso Tradicional.svg'
 import ExpressoAmericano from '../assets/coffee/Expresso Americano.svg'
-import { v4 as uuidv4 } from 'uuid'
 
 export const listOfAllCoffee = [
   {
-    id: uuidv4(),
+    id: 1,
     img: ExpressoTradicional,
     title: 'Expresso Tradicional',
     description: 'Descrição do café tradicional',
@@ -12,7 +11,7 @@ export const listOfAllCoffee = [
   },
 
   {
-    id: uuidv4(),
+    id: 2,
     img: ExpressoAmericano,
     title: 'Expresso Americano',
     description: 'Descrição do café americano',
