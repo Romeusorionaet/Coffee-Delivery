@@ -1,59 +1,37 @@
-import { useContext, useEffect, useState } from 'react'
-import { CoffeeOfContext } from '../../contexts/CoffeeDeliveryContext'
+import { MapPinLine } from 'phosphor-react'
+import { SelectedCoffees } from '../../components/SelectedCoffees'
+import { PaymentOptions } from './components/PaymentOptions'
+import { CheckoutContainer, HeaderForm, InputsContainer } from './styles'
 
 export function Checkout() {
-  const {
-    orderCoffee,
-    removeCoffeeFromCart,
-    handleLessCoffee,
-    handleMoreCoffee,
-  } = useContext(CoffeeOfContext)
-  const freight = '3.50'
-
-  const [totalValue, setTotalValue] = useState<number>(0)
-
-  useEffect(() => {
-    let sum = 0
-    if (orderCoffee) {
-      orderCoffee.forEach((item) => {
-        sum += item.price * item.coffeeQuantity
-      })
-    }
-    setTotalValue(sum)
-  }, [orderCoffee])
-
   return (
-    <div>
-      <h1>Checkout</h1>
+    <CheckoutContainer>
+      <h1>Complete seu pedido</h1>
+      <form>
+        <HeaderForm>
+          <MapPinLine size={22} />
+          <div>
+            <h2>Endereço de Entrega</h2>
+            <p>informe o endereço onde deseja receber seu pedido</p>
+          </div>
+        </HeaderForm>
 
-      <span>TOTAL DE ITEMS: {totalValue}</span>
-      <br />
-      <span>VALOR DA ENTREGA: {freight}</span>
-      <br />
-      <span>VALOR TOTAL: {totalValue + Number(freight)}</span>
+        <InputsContainer>
+          <input type="number" placeholder="CEP" />
+          <input type="name" placeholder="Rua" />
 
-      {orderCoffee &&
-        orderCoffee.map((item) => {
-          return (
-            <div key={item.id}>
-              <img src={item.img} alt="" />
-              <h3>{item.title}</h3>
-              <p>{item.description}</p>
+          <div>
+            <input type="number" placeholder="Número" />
+            <input type="name" placeholder="Complemento Opcioanl" />
+            <input type="name" placeholder="Bairro" />
+            <input type="name" placeholder="Cidade" />
+            <input type="name" placeholder="UF" />
+          </div>
+        </InputsContainer>
+      </form>
+      <PaymentOptions />
 
-              <div>
-                <button onClick={() => handleLessCoffee(item.id)}>Menos</button>
-                <span>{item.coffeeQuantity}</span>
-                <button onClick={() => handleMoreCoffee(item.id)}>Mais</button>
-              </div>
-
-              <span>{item.price * item.coffeeQuantity}</span>
-
-              <button onClick={() => removeCoffeeFromCart(item.id)}>
-                Remover
-              </button>
-            </div>
-          )
-        })}
-    </div>
+      <SelectedCoffees />
+    </CheckoutContainer>
   )
 }

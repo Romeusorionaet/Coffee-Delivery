@@ -17,8 +17,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: ${(props) => props.theme['gray-100']};
-        color: ${(props) => props.theme['gray-300']};
+        background-color: ${(props) => props.theme['white-200']};
     }
 
     body, input-security, textarea, button {
