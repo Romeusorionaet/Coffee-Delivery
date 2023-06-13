@@ -1,8 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import {
-  CoffeeOfContext,
-  CoffeeProps,
-} from '../../contexts/CoffeeDeliveryContext'
+import { CoffeeOfContext } from '../../contexts/CoffeeDeliveryContext'
 
 export function Checkout() {
   const {
@@ -14,14 +11,8 @@ export function Checkout() {
   const freight = '3.50'
 
   const [totalValue, setTotalValue] = useState<number>(0)
-  const [listOfCoffeeSaved, setListOfCoffeeSaved] = useState<CoffeeProps[]>([])
 
   useEffect(() => {
-    const transformListSaved = localStorage.getItem('@coffeeDeliveryCart-1.0')
-    if (transformListSaved) {
-      setListOfCoffeeSaved(JSON.parse(transformListSaved))
-    }
-
     let sum = 0
     if (orderCoffee) {
       orderCoffee.forEach((item) => {
@@ -30,8 +21,6 @@ export function Checkout() {
     }
     setTotalValue(sum)
   }, [orderCoffee])
-
-  console.log(listOfCoffeeSaved)
 
   return (
     <div>

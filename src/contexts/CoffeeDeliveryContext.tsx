@@ -31,7 +31,6 @@ export function CoffeeDeliveryContext({
     (state: CoffeeProps[], action: any) => {
       if (action.type === 'ADD_NEW_COFFEE') {
         const { id, coffeeQuantity } = action.payload.data
-        localStorage.setItem('@coffeeDeliveryCart-1.0', JSON.stringify(state))
 
         const existingCoffee = state.findIndex((item) => item.id === id)
 
@@ -45,6 +44,11 @@ export function CoffeeDeliveryContext({
           const updatedOrderCoffee = [...state]
           updatedOrderCoffee[existingCoffee] = updatedCoffee
 
+          localStorage.setItem(
+            '@coffeeDeliveryCart-1.0',
+            JSON.stringify(action.payload.data),
+          )
+
           return updatedOrderCoffee
         } else {
           return [...state, action.payload.data]
@@ -57,6 +61,11 @@ export function CoffeeDeliveryContext({
         const listOfCoffeeWithoutDeleteOne = state.filter((item) => {
           return item.id !== id
         })
+
+        localStorage.setItem(
+          '@coffeeDeliveryCart-1.0',
+          JSON.stringify(listOfCoffeeWithoutDeleteOne),
+        )
 
         return listOfCoffeeWithoutDeleteOne
       }
@@ -74,6 +83,11 @@ export function CoffeeDeliveryContext({
 
           const newQuantityOfCoffee = [...state]
           newQuantityOfCoffee[coffeeFound] = updatedCoffeeQuantity
+
+          localStorage.setItem(
+            '@coffeeDeliveryCart-1.0',
+            JSON.stringify(newQuantityOfCoffee),
+          )
 
           return newQuantityOfCoffee
         } else {
@@ -98,16 +112,22 @@ export function CoffeeDeliveryContext({
           const newQuantityOfCoffee = [...state]
           newQuantityOfCoffee[coffeeFound] = updatedCoffeeQuantity
 
+          localStorage.setItem(
+            '@coffeeDeliveryCart-1.0',
+            JSON.stringify(newQuantityOfCoffee),
+          )
+
           return newQuantityOfCoffee
         } else {
           return [...state, action.payload.data]
         }
       }
-      // stoped here...
-      // const transformListSaved = localStorage.getItem('@coffeeDeliveryCart-1.0')
+
       return state
     },
-    [],
+    localStorage.getItem('@coffeeDeliveryCart-1.0')
+      ? JSON.parse(localStorage.getItem('@coffeeDeliveryCart-1.0')!)
+      : [],
   )
 
   function addCoffeeToCart({
