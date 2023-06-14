@@ -2,35 +2,32 @@ import styled from 'styled-components'
 
 export const CheckoutContainer = styled.div`
   display: grid;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1.2rem;
   grid-template-areas:
-    'TITLE TITLE'
     'FORM ASIDE'
     'PAYMENT ASIDE';
 
-  padding: 18rem 16rem;
-  border-radius: 6px;
-
-  h1 {
-    background-color: ${(props) => props.theme['white-200']};
-    color: ${(props) => props.theme['gray-400']};
-    border-radius: 6px;
-
-    font-size: 1.8rem;
-    font-weight: bold;
-
-    margin-bottom: 1.5rem;
-
-    grid-area: TITLE;
-  }
+  padding: 7.2rem 16rem;
 
   form {
     grid-area: FORM;
 
+    border-radius: 40px;
+
     color: ${(props) => props.theme['white-500']};
     width: 64rem;
     background-color: ${(props) => props.theme['white-300']};
+
+    h1 {
+      background-color: ${(props) => props.theme['white-200']};
+      color: ${(props) => props.theme['gray-400']};
+
+      font-size: 1.8rem;
+      font-weight: bold;
+
+      padding-bottom: 1.5rem;
+    }
   }
 `
 
@@ -85,6 +82,12 @@ export const InputsContainer = styled.div`
     line-height: 1.8rem;
     font-size: 1.4rem;
     font-style: regular;
+  }
+
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 
   input::placeholder {

@@ -25,4 +25,16 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-size: 1rem;
     }
+
+    .scrollbar::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background: gray;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb:hover {
+        background: green;
+    }
 `
