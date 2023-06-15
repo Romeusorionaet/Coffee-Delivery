@@ -1,10 +1,10 @@
-import { MenuCoffee } from '../../components/MenuCoffee'
+import { MenuCoffee } from './componets/MenuCoffee'
+import { Description } from './componets/Description'
 
 export function Home() {
   return (
     <div>
-      <h1>Home</h1>
-
+      <Description />
       <MenuCoffee />
     </div>
   )

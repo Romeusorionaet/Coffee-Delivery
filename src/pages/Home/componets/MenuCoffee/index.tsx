@@ -1,9 +1,13 @@
-import { listOfAllCoffee } from '../../Menu/listOfAllCoffee'
+import { listOfAllCoffee } from '../../../../Menu/listOfAllCoffee'
 import { Coffee } from '../Coffee'
+
+import { MenuCoffeeContainer } from './styles'
 
 export function MenuCoffee() {
   return (
-    <div>
+    <MenuCoffeeContainer>
+      <h2>Nossos cafés</h2>
+
       {listOfAllCoffee.map((item) => {
         return (
           <Coffee
@@ -13,9 +17,10 @@ export function MenuCoffee() {
             img={item.img}
             description={item.description}
             price={item.price}
+            coffeeQuantity={1}
           />
         )
       })}
-    </div>
+    </MenuCoffeeContainer>
   )
 }

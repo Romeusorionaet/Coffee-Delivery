@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import { CoffeeOfContext } from '../../contexts/CoffeeDeliveryContext'
 import { AsideContainer, ResultOfValues } from './styles'
 import { SelectedCoffee } from '../SelectedCoffee'
+import { NavLink } from 'react-router-dom'
 
 export function Aside() {
   const { orderCoffee } = useContext(CoffeeOfContext)
@@ -35,7 +36,10 @@ export function Aside() {
         <p>
           Total <span>R$ {totalValue + Number(freight)}</span>
         </p>
-        <button>CONFIRMAR PEDIDO</button>
+
+        <NavLink to={'/success'}>
+          <button>CONFIRMAR PEDIDO</button>
+        </NavLink>
       </ResultOfValues>
     </AsideContainer>
   )
