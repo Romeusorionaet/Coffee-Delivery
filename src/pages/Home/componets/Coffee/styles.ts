@@ -36,10 +36,11 @@ export const WrapperText = styled.div`
 
   .category {
     background-color: ${(props) => props.theme['yellow-100']};
-
     border-radius: 6px;
-
     padding: 0.4rem;
+
+    display: flex;
+    gap: 1rem;
 
     span {
       color: ${(props) => props.theme['yellow-300']};
@@ -47,6 +48,8 @@ export const WrapperText = styled.div`
       font-size: 1rem;
       font-style: bold;
       font-weight: 700;
+
+      text-transform: uppercase;
     }
   }
 

@@ -10,6 +10,7 @@ export interface CoffeeProps {
   title: string
   description: string
   price: number
+  category: [{ tag: string; id: string }]
   coffeeQuantity: number
 }
 
@@ -140,12 +141,13 @@ export function CoffeeDeliveryContext({
     img,
     description,
     price,
+    category,
     coffeeQuantity,
   }: CoffeeProps) {
     dispatch({
       type: 'ADD_NEW_COFFEE',
       payload: {
-        data: { id, img, title, description, price, coffeeQuantity },
+        data: { id, img, title, description, price, category, coffeeQuantity },
       },
     })
   }

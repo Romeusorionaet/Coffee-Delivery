@@ -3,9 +3,11 @@ import { CoffeeOfContext } from '../../contexts/CoffeeDeliveryContext'
 import { AsideContainer, ResultOfValues } from './styles'
 import { SelectedCoffee } from '../SelectedCoffee'
 import { NavLink } from 'react-router-dom'
+import { AddressContext } from '../../contexts/AddressFormContext'
 
 export function Aside() {
   const { orderCoffee } = useContext(CoffeeOfContext)
+  const { handleDataForm } = useContext(AddressContext)
   const freight = '3.50'
 
   const [totalValue, setTotalValue] = useState<number>(0)
@@ -38,7 +40,7 @@ export function Aside() {
         </p>
 
         <NavLink to={'/success'}>
-          <button>CONFIRMAR PEDIDO</button>
+          <button onClick={handleDataForm}>CONFIRMAR PEDIDO</button>
         </NavLink>
       </ResultOfValues>
     </AsideContainer>

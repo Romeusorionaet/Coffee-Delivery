@@ -4,13 +4,16 @@ import { defaultTheme } from './styles/themes/default'
 import { GlobalStyle } from './styles/global'
 import { Router } from './Router'
 import { CoffeeDeliveryContext } from './contexts/CoffeeDeliveryContext'
+import { AddressFormContext } from './contexts/AddressFormContext'
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <BrowserRouter>
         <CoffeeDeliveryContext>
-          <Router />
+          <AddressFormContext>
+            <Router />
+          </AddressFormContext>
         </CoffeeDeliveryContext>
       </BrowserRouter>
       <GlobalStyle />

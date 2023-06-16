@@ -2,10 +2,21 @@ import { MapPinLine } from 'phosphor-react'
 import { Aside } from '../../components/Aside'
 import { PaymentOptions } from './components/PaymentOptions'
 import { CheckoutContainer, HeaderForm, InputsContainer } from './styles'
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
+import { AddressContext } from '../../contexts/AddressFormContext'
 
 export function Checkout() {
-  const [cidade, setCidade] = useState('')
+  const {
+    handleDataForm,
+    setCep,
+    setCity,
+    setComplement,
+    setNeighborhood,
+    setNumber,
+    setStreet,
+    setUf,
+    city,
+  } = useContext(AddressContext)
 
   function preencherCidadePorCEP(cep: string): void {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
@@ -14,7 +25,7 @@ export function Checkout() {
         if ('erro' in data) {
           console.log('CEP inválido')
         } else {
-          setCidade(data.localidade)
+          setCity(data.localidade)
         }
       })
       .catch((error) => {
@@ -31,7 +42,7 @@ export function Checkout() {
 
   return (
     <CheckoutContainer>
-      <form>
+      <form onSubmit={handleDataForm}>
         <h1>Complete seu pedido</h1>
         <HeaderForm>
           <MapPinLine size={22} />
@@ -42,15 +53,45 @@ export function Checkout() {
         </HeaderForm>
 
         <InputsContainer>
-          <input type="number" onBlur={handleBlur} placeholder="CEP" />
-          <input type="name" placeholder="Rua" />
+          <input
+            type="number"
+            onBlur={handleBlur}
+            placeholder="CEP"
+            onChange={(e) => setCep(Number(e.target.value))}
+          />
+          <input
+            type="name"
+            placeholder="Rua"
+            onChange={(e) => setStreet(e.target.value)}
+          />
 
           <div>
-            <input type="number" placeholder="Número" />
-            <input type="name" placeholder="Complemento: opcional" />
-            <input type="name" placeholder="Bairro" />
-            <input type="name" value={cidade} placeholder="Cidade" />
-            <input type="name" placeholder="UF" />
+            <input
+              type="number"
+              placeholder="Número"
+              onChange={(e) => setNumber(Number(e.target.value))}
+            />
+            <input
+              type="name"
+              placeholder="Complemento: opcional"
+              onChange={(e) => setComplement(e.target.value)}
+            />
+            <input
+              type="name"
+              placeholder="Bairro"
+              onChange={(e) => setNeighborhood(e.target.value)}
+            />
+            <input
+              type="name"
+              value={city}
+              placeholder="Cidade"
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <input
+              type="name"
+              placeholder="UF"
+              onChange={(e) => setUf(e.target.value)}
+            />
           </div>
         </InputsContainer>
       </form>

@@ -7,7 +7,16 @@ import {
 import { CoffeeContainer, Controll, WrapperText } from './styles'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 
-export function Coffee({ id, img, title, description, price }: CoffeeProps) {
+// import { v4 as uuidv4 } from 'uuid'
+
+export function Coffee({
+  id,
+  img,
+  title,
+  description,
+  category,
+  price,
+}: CoffeeProps) {
   const [coffeeQuantity, setCoffeeQuantity] = useState<number>(1)
   const { addCoffeeToCart } = useContext(CoffeeOfContext)
 
@@ -22,8 +31,24 @@ export function Coffee({ id, img, title, description, price }: CoffeeProps) {
   }
 
   function handleAddToCart() {
-    addCoffeeToCart({ id, img, title, description, coffeeQuantity, price })
+    addCoffeeToCart({
+      id,
+      img,
+      title,
+      description,
+      coffeeQuantity,
+      category,
+      price,
+    })
   }
+
+  // category.forEach((cat) => {
+  //   cat.id = uuidv4()
+  // })
+
+  // const listItems = category.map((cat) => <span key={cat.id}>{cat.tag}</span>)
+
+  // category.map((item) => console.log(item))
 
   return (
     <CoffeeContainer>
@@ -31,9 +56,10 @@ export function Coffee({ id, img, title, description, price }: CoffeeProps) {
         <div className="imagem">
           <img src={img} alt="" />
         </div>
-        <div className="category">
-          <span>TRADICIONAL</span>
-        </div>
+        {/* <div className="category">{listItems}</div> */}
+        {category.map((item) => (
+          <span key={item.id}>{item.tag}</span>
+        ))}
         <h3>{title}</h3>
         <p>{description}</p>
       </WrapperText>
