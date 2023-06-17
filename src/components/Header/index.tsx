@@ -5,16 +5,21 @@ import { CoffeeOfContext } from '../../contexts/CoffeeDeliveryContext'
 
 import logoCoffee from '../../assets/logoCoffee.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { AddressContext } from '../../contexts/AddressFormContext'
 
 export function Header() {
   const { orderCoffee } = useContext(CoffeeOfContext)
+  const { city, uf, street } = useContext(AddressContext)
 
-  const handleButtonClick = () => {
-    const cidade = 'Sua Cidade'
-    const endereco = encodeURIComponent(cidade)
-    const url = `https://www.google.com/maps/search/?api=1&query=${endereco}`
+  const handleButtonMap = () => {
+    if (city && street) {
+      const address = encodeURIComponent(`${city}, ${street}`)
+      const url = `https://www.google.com/maps/search/?api=1&query=${address}`
 
-    window.open(url, '_blank')
+      window.open(url, '_blank')
+    } else {
+      alert('Parece que você ainda não informou o local de entrega')
+    }
   }
 
   return (
@@ -27,9 +32,13 @@ export function Header() {
       </NavLink>
 
       <nav>
-        <button onClick={handleButtonClick}>
+        <button onClick={handleButtonMap}>
           <MapPin size={26} weight="fill" />
-          <p>Canguaretama, RN</p>
+          {(city || uf) && (
+            <p>
+              {city}, <span>{uf}</span>
+            </p>
+          )}
         </button>
 
         <NavLink to={'/checkout'}>

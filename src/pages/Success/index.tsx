@@ -4,8 +4,12 @@ import sifrao from '../../assets/tags/sifrao.svg'
 import motoBoy from '../../assets/motoBoy.svg'
 
 import { SucessContainer, SectionDescription } from './styles'
+import { useContext } from 'react'
+import { AddressContext } from '../../contexts/AddressFormContext'
 
 export function Success() {
+  const { dataForm } = useContext(AddressContext)
+
   return (
     <SucessContainer>
       <div className="text">
@@ -14,30 +18,40 @@ export function Success() {
       </div>
 
       <SectionDescription>
-        <div className="background">
-          <div className="wrapper">
-            <div>
-              <img src={localMap} alt="" />
-              <p>
-                Entrega em <strong>Rua João Daniel Martinelli, 102</strong>{' '}
-                Farrapos - Porto Alegre, RS
-              </p>
-            </div>
-            <div>
-              <img src={watch} alt="" />
-              <p>
-                Previsão de entrega <strong>20 min - 30 min</strong>
-              </p>
-            </div>
-            <div>
-              <img src={sifrao} alt="" />
-              <p>
-                Pagamento na entrega <strong>Cartão de Crédito</strong>
-              </p>
-            </div>
-          </div>
-        </div>
-        <img src={motoBoy} alt="" />
+        {dataForm &&
+          dataForm.map((data) => {
+            return (
+              <div key={data.number}>
+                <div className="background">
+                  <div className="wrapper">
+                    <div>
+                      <img src={localMap} alt="" />
+                      <p>
+                        Entrega em{' '}
+                        <strong>
+                          {data.street}, {data.number}{' '}
+                        </strong>
+                        {data.complement} - {data.city}, {data.uf}
+                      </p>
+                    </div>
+                    <div>
+                      <img src={watch} alt="" />
+                      <p>
+                        Previsão de entrega <strong>20 min - 30 min</strong>
+                      </p>
+                    </div>
+                    <div>
+                      <img src={sifrao} alt="" />
+                      <p>
+                        Pagamento na entrega <strong>{data.payment}</strong>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <img src={motoBoy} alt="" />
+              </div>
+            )
+          })}
       </SectionDescription>
     </SucessContainer>
   )

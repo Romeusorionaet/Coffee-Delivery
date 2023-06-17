@@ -29,6 +29,10 @@ export const ContainerHeader = styled.div`
       display: flex;
       align-items: center;
       gap: 4px;
+
+      p span {
+        text-transform: uppercase;
+      }
     }
 
     .wrapper {

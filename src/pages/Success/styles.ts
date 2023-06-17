@@ -24,10 +24,12 @@ export const SucessContainer = styled.div`
 `
 
 export const SectionDescription = styled.section`
-  display: flex;
-  justify-content: space-between;
-
   margin-top: 4rem;
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .background {
     background-image: linear-gradient(

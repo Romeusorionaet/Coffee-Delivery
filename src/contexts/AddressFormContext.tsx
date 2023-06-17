@@ -28,6 +28,8 @@ interface AddressFormContextType {
   setUf: React.Dispatch<React.SetStateAction<string>>
   setPayment: React.Dispatch<React.SetStateAction<string>>
   city: string
+  uf: string
+  street: string
   dataForm: AddressFormProps[]
 }
 
@@ -45,7 +47,7 @@ export function AddressFormContext({
   const [uf, setUf] = useState('')
   const [payment, setPayment] = useState('')
 
-  const [dataForm, setDataForm] = useState<AddressFormProps[]>([])
+  const [dataForm, setDataForm] = useState<AddressFormProps[]>([]) // dataForm returns an object that is the final result of the user's request
 
   const { orderCoffee } = useContext(CoffeeOfContext)
 
@@ -78,6 +80,8 @@ export function AddressFormContext({
         setUf,
         setPayment,
         city,
+        uf,
+        street,
         dataForm,
       }}
     >
