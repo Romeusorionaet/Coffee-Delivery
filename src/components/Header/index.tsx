@@ -44,9 +44,13 @@ export function Header() {
         <NavLink to={'/checkout'}>
           <div className="wrapper">
             <ShoppingCart size={32} weight="fill" />
-            <div className="quantity">
-              <span>{orderCoffee.length}</span>
-            </div>
+            {orderCoffee.length === 0 ? (
+              <></>
+            ) : (
+              <div className="quantity">
+                <span>{orderCoffee.length}</span>
+              </div>
+            )}
           </div>
         </NavLink>
       </nav>

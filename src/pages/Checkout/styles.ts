@@ -73,7 +73,7 @@ export const InputsContainer = styled.div`
     height: 4.2rem;
     padding: 1.2rem;
 
-    border: none;
+    border: solid 1px transparent;
     border-radius: 4px;
 
     background-color: ${(props) => props.theme['white-400']};
@@ -82,6 +82,10 @@ export const InputsContainer = styled.div`
     line-height: 1.8rem;
     font-size: 1.4rem;
     font-style: regular;
+  }
+
+  input:focus {
+    border: solid 1px ${(props) => props.theme['yellow-200']};
   }
 
   input[type='number']::-webkit-inner-spin-button,

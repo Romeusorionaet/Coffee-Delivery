@@ -7,8 +7,6 @@ import {
 import { CoffeeContainer, Controll, WrapperText } from './styles'
 import { Minus, Plus, ShoppingCart } from 'phosphor-react'
 
-// import { v4 as uuidv4 } from 'uuid'
-
 export function Coffee({
   id,
   img,
@@ -41,14 +39,6 @@ export function Coffee({
       price,
     })
   }
-
-  // category.forEach((cat) => {
-  //   cat.id = uuidv4()
-  // })
-
-  // const listItems = category.map((cat) => <span key={cat.id}>{cat.tag}</span>)
-
-  // category.map((item) => console.log(item))
 
   return (
     <CoffeeContainer>

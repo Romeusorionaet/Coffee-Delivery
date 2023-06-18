@@ -47,7 +47,7 @@ export const ButtonController = styled.div`
 
     > div {
       color: ${(props) => props.theme['gray-400']};
-      background-color: ${(props) => props.theme['gray-100']};
+      background-color: ${(props) => props.theme['white-500']};
 
       font-size: 1.6rem;
       font-weight: 400;
@@ -68,7 +68,7 @@ export const ButtonController = styled.div`
     }
 
     > button {
-      background-color: ${(props) => props.theme['gray-100']};
+      background-color: ${(props) => props.theme['white-500']};
       color: ${(props) => props.theme['gray-300']};
 
       border-radius: 6px;
@@ -86,6 +86,10 @@ export const ButtonController = styled.div`
       justify-content: center;
       align-items: center;
       gap: 0.5rem;
+    }
+
+    > button:hover {
+      background-color: ${(props) => props.theme['gray-100']};
     }
   }
 `

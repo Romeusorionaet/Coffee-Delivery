@@ -53,7 +53,13 @@ export const ResultOfValues = styled.div`
     margin-top: 1.2rem;
     padding: 1.2rem;
 
+    width: 100%;
+
     font-size: 1.4rem;
     font-style: bold;
+  }
+
+  button:hover {
+    background-color: ${(props) => props.theme['yellow-300']};
   }
 `

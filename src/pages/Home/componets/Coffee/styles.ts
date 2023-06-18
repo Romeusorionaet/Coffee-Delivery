@@ -94,7 +94,7 @@ export const Controll = styled.div`
 
   div {
     color: ${(props) => props.theme['gray-400']};
-    background-color: ${(props) => props.theme['gray-100']};
+    background-color: ${(props) => props.theme['white-500']};
 
     font-size: 1.6rem;
     font-weight: 400;
@@ -120,7 +120,11 @@ export const Controll = styled.div`
 
     padding: 0.8rem;
 
-    background-color: ${(props) => props.theme['purple-300']};
+    background-color: ${(props) => props.theme['purple-200']};
     color: ${(props) => props.theme['white-100']};
+  }
+
+  > button:hover {
+    background-color: ${(props) => props.theme['purple-300']};
   }
 `
