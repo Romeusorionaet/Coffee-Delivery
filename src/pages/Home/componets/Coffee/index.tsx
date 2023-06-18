@@ -46,7 +46,6 @@ export function Coffee({
         <div className="imagem">
           <img src={img} alt="" />
         </div>
-        {/* <div className="category">{listItems}</div> */}
         {category.map((item) => (
           <span key={item.id}>{item.tag}</span>
         ))}

@@ -127,7 +127,7 @@ export const listOfAllCoffee = [
 },
 
 {
-  id: 12,
+  id: 13,
   img: Macchiato,
   title: 'Macchiato',
   category:  [{tag: 'tradicional', id: uuidv4()}, {tag: 'com leite', id: uuidv4()}],
@@ -136,7 +136,7 @@ export const listOfAllCoffee = [
 },
 
 {
-  id: 12,
+  id: 14,
   img: Mocaccino,
   title: 'mocaccino',
   category: [{tag: 'tradicional', id: uuidv4()}, {tag: 'com leite', id: uuidv4()}],
