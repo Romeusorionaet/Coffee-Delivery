@@ -1,5 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react'
 import { CoffeeOfContext, CoffeeProps } from './CoffeeDeliveryContext'
+import { useNavigate } from 'react-router-dom'
 
 interface AddressFormContextProviderProps {
   children: ReactNode
@@ -51,20 +52,36 @@ export function AddressFormContext({
 
   const { orderCoffee } = useContext(CoffeeOfContext)
 
+  const navigate = useNavigate()
+
   function handleDataForm() {
-    setDataForm([
-      {
-        cep,
-        street,
-        number,
-        complement,
-        neighborhood,
-        city,
-        uf,
-        payment,
-        orderCoffee,
-      },
-    ])
+    if (
+      !cep ||
+      !street ||
+      !number ||
+      !neighborhood ||
+      !city ||
+      !uf ||
+      !payment ||
+      orderCoffee.length === 0
+    ) {
+      alert('Informe todos os dados necessário!')
+    } else {
+      setDataForm([
+        {
+          cep,
+          street,
+          number,
+          complement,
+          neighborhood,
+          city,
+          uf,
+          payment,
+          orderCoffee,
+        },
+      ])
+      navigate('/Success')
+    }
   }
 
   return (

@@ -22,6 +22,12 @@ export function Header() {
     }
   }
 
+  function teste() {
+    if (orderCoffee.length === 0) {
+      return alert('Carrinho vazio!')
+    }
+  }
+
   return (
     <ContainerHeader>
       <NavLink to={'/'}>
@@ -41,8 +47,8 @@ export function Header() {
           )}
         </button>
 
-        <NavLink to={'/checkout'}>
-          <div className="wrapper">
+        <NavLink to={orderCoffee.length === 0 ? '#' : '/checkout'}>
+          <div onClick={teste} className="wrapper">
             <ShoppingCart size={32} weight="fill" />
             {orderCoffee.length === 0 ? (
               <></>

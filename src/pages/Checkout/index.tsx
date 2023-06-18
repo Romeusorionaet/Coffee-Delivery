@@ -7,7 +7,6 @@ import { AddressContext } from '../../contexts/AddressFormContext'
 
 export function Checkout() {
   const {
-    handleDataForm,
     setCep,
     setCity,
     setComplement,
@@ -42,7 +41,7 @@ export function Checkout() {
 
   return (
     <CheckoutContainer>
-      <form onSubmit={handleDataForm}>
+      <form>
         <h1>Complete seu pedido</h1>
         <HeaderForm>
           <MapPinLine size={22} />
