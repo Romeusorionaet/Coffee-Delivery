@@ -77,7 +77,7 @@ export const PageDescriptionContainer = styled.div`
 
       h1 {
         line-height: 4.2rem;
-        font-size: clamp(1.8rem, calc(2vw + 1.8rem), 4.8rem);
+        font-size: clamp(1.4rem, calc(2vw + 2rem), 4.8rem);
       }
 
       p {

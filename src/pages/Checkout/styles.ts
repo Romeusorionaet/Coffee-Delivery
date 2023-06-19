@@ -16,7 +16,7 @@ export const CheckoutContainer = styled.div`
     border-radius: 40px;
 
     color: ${(props) => props.theme['white-500']};
-    width: 64rem;
+    max-width: 64rem;
     background-color: ${(props) => props.theme['white-300']};
 
     h1 {
@@ -28,6 +28,26 @@ export const CheckoutContainer = styled.div`
 
       padding-bottom: 1.5rem;
     }
+  }
+
+  @media (max-width: 1400px) {
+    padding: 7.2rem 6rem;
+  }
+
+  @media (max-width: 1200px) {
+    justify-content: center;
+    gap: 4rem;
+
+    grid-template-areas:
+      'FORM'
+      'PAYMENT'
+      'ASIDE';
+  }
+
+  @media (max-width: 700px) {
+    grid-auto-columns: 90%;
+
+    padding: 4.2rem 0.5rem;
   }
 `
 
@@ -99,11 +119,11 @@ export const InputsContainer = styled.div`
   }
 
   > input:first-child {
-    width: 20rem;
+    max-width: 20rem;
   }
 
   > input:nth-child(2) {
-    width: 56rem;
+    max-width: 56rem;
   }
 
   div {
@@ -115,27 +135,34 @@ export const InputsContainer = styled.div`
 
     input:nth-child(1) {
       grid-area: A;
-      width: 20rem;
+      max-width: 20rem;
     }
 
     input:nth-child(2) {
-      width: 34.8rem;
+      max-width: 34.8rem;
       grid-area: B;
     }
 
     input:nth-child(3) {
       grid-area: C;
-      width: 20rem;
+      max-width: 20rem;
     }
 
     input:nth-child(4) {
-      width: 27.6rem;
+      max-width: 27.6rem;
       grid-area: D;
     }
 
     input:nth-child(5) {
-      width: 6rem;
+      max-width: 6rem;
       grid-area: E;
+    }
+  }
+
+  @media (max-width: 700px) {
+    input {
+      width: 100%;
+      font-size: 1.2rem;
     }
   }
 `

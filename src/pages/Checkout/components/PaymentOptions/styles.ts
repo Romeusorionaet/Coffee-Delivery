@@ -3,8 +3,7 @@ import styled from 'styled-components'
 export const PaymentOptionsContainer = styled.div`
   grid-area: PAYMENT;
 
-  width: 64rem;
-  height: 20.7rem;
+  max-width: 64rem;
 
   padding: 4rem;
   border-radius: 40px;
@@ -54,7 +53,7 @@ export const Options = styled.div`
 
     padding: 1.6rem 1rem;
 
-    width: 18rem;
+    max-width: 18rem;
     height: 5rem;
 
     border: none;
@@ -87,5 +86,14 @@ export const Options = styled.div`
   button:focus {
     border: solid 2px ${(props) => props.theme['purple-200']};
     background-color: ${(props) => props.theme['purple-100']};
+  }
+
+  @media (max-width: 700px) {
+    flex-wrap: wrap;
+    justify-content: center;
+
+    button {
+      width: 100%;
+    }
   }
 `

@@ -94,8 +94,8 @@ export function Checkout() {
           </div>
         </InputsContainer>
       </form>
-      <PaymentOptions />
 
+      <PaymentOptions />
       <Aside />
     </CheckoutContainer>
   )

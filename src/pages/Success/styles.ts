@@ -21,6 +21,28 @@ export const SucessContainer = styled.div`
       font-style: regular;
     }
   }
+
+  @media (max-width: 1200px) {
+    margin: 4rem 6rem;
+
+    .text {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 600px) {
+    margin: 4rem 4rem;
+
+    .text {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      p {
+        font-size: 1.8rem;
+      }
+    }
+  }
 `
 
 export const SectionDescription = styled.section`
@@ -65,12 +87,48 @@ export const SectionDescription = styled.section`
       display: flex;
       align-items: center;
       gap: 1.2rem;
-      width: 38rem;
+      max-width: 38rem;
 
       p {
         font-size: 1.6rem;
         line-height: 2rem;
         color: ${(props) => props.theme['gray-300']};
+      }
+    }
+  }
+
+  @media (max-width: 1200px) {
+    > div {
+      height: 65vh;
+
+      display: flex;
+      flex-direction: column;
+      gap: 6rem;
+      align-items: center;
+
+      img {
+        max-width: 50rem;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    > div {
+      justify-content: start;
+
+      img {
+        max-width: 30rem;
+      }
+    }
+
+    .background {
+      max-width: 100%;
+    }
+    .wrapper {
+      padding: 1rem;
+
+      div p {
+        font-size: 1.4rem;
       }
     }
   }

@@ -34,7 +34,7 @@ export function SelectedCoffee() {
                   </div>
 
                   <button onClick={() => removeCoffeeFromCart(item.id)}>
-                    <Trash size={14} /> Remover
+                    <Trash size={14} /> <span>Remover</span>
                   </button>
                 </div>
               </ButtonController>

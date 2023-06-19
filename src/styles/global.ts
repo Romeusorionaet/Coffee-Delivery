@@ -26,6 +26,10 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: 400;
     }
 
+    .hidden {
+        display: none;
+    }
+
     .scrollbar::-webkit-scrollbar {
         width: 4px;
     }

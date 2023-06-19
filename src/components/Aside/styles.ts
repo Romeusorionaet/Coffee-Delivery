@@ -4,7 +4,6 @@ export const AsideContainer = styled.aside`
   grid-area: ASIDE;
 
   border-radius: 40px;
-  width: 44.8rem;
 
   color: ${(props) => props.theme['white-500']};
   background-color: ${(props) => props.theme['white-300']};
