@@ -8,7 +8,7 @@ export const CheckoutContainer = styled.div`
     'FORM ASIDE'
     'PAYMENT ASIDE';
 
-  padding: 7.2rem 16rem;
+  padding: 16rem;
 
   form {
     grid-area: FORM;
@@ -31,7 +31,7 @@ export const CheckoutContainer = styled.div`
   }
 
   @media (max-width: 1400px) {
-    padding: 7.2rem 6rem;
+    padding: 16rem 6rem;
   }
 
   @media (max-width: 1200px) {
@@ -47,7 +47,7 @@ export const CheckoutContainer = styled.div`
   @media (max-width: 700px) {
     grid-auto-columns: 90%;
 
-    padding: 4.2rem 0.5rem;
+    padding: 15.2rem 0.5rem;
   }
 `
 

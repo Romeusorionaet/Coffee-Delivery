@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SucessContainer = styled.div`
-  margin: 8rem 16rem;
+  margin: 12.5rem 16rem;
 
   .text {
     h1 {
@@ -23,7 +23,7 @@ export const SucessContainer = styled.div`
   }
 
   @media (max-width: 1200px) {
-    margin: 4rem 6rem;
+    margin: 12.5rem 6rem;
 
     .text {
       text-align: center;
@@ -31,7 +31,7 @@ export const SucessContainer = styled.div`
   }
 
   @media (max-width: 600px) {
-    margin: 4rem 4rem;
+    margin: 16rem 4rem;
 
     .text {
       h1 {

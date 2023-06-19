@@ -59,7 +59,7 @@ export function Checkout() {
             onChange={(e) => setCep(Number(e.target.value))}
           />
           <input
-            type="name"
+            type="text"
             placeholder="Rua"
             onChange={(e) => setStreet(e.target.value)}
           />
@@ -71,23 +71,25 @@ export function Checkout() {
               onChange={(e) => setNumber(Number(e.target.value))}
             />
             <input
-              type="name"
+              type="text"
               placeholder="Complemento: opcional"
               onChange={(e) => setComplement(e.target.value)}
             />
             <input
-              type="name"
+              type="text"
               placeholder="Bairro"
               onChange={(e) => setNeighborhood(e.target.value)}
             />
             <input
-              type="name"
+              type="text"
               value={city}
               placeholder="Cidade"
               onChange={(e) => setCity(e.target.value)}
             />
             <input
-              type="name"
+              type="text"
+              name="nome"
+              maxLength={2}
               placeholder="UF"
               onChange={(e) => setUf(e.target.value)}
             />

@@ -18,7 +18,7 @@ export function Header() {
 
       window.open(url, '_blank')
     } else {
-      alert('Parece que você ainda não informou o local de entrega')
+      alert('É preciso do campo "Cidade" e "Rua" para localizar')
     }
   }
 

@@ -5,7 +5,7 @@ export const PageDescriptionContainer = styled.div`
   justify-content: space-between;
   gap: 5.6rem;
 
-  margin: 10rem 16rem;
+  margin: 20rem 16rem 10rem;
 
   .wrapper {
     width: 57rem;
@@ -63,14 +63,14 @@ export const PageDescriptionContainer = styled.div`
   }
 
   @media (max-width: 1200px) {
-    margin: 10rem 6rem;
+    margin: 16rem 6rem 10rem;
   }
 
   @media (max-width: 1000px) {
     position: relative;
     justify-content: center;
 
-    margin: 20rem 6rem 8rem;
+    margin: 40rem 6rem 8rem;
 
     .wrapper {
       padding: 1rem;

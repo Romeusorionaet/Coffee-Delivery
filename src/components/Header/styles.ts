@@ -3,7 +3,16 @@ import styled from 'styled-components'
 export const ContainerHeader = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 3.2rem 16rem;
+
+  padding: 4rem 16rem;
+  border-bottom: solid 2px ${(props) => props.theme['gray-100']};
+
+  z-index: 2;
+
+  background-color: ${(props) => props.theme['white-200']};
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   a {
     text-decoration: none;
@@ -25,6 +34,8 @@ export const ContainerHeader = styled.div`
       font-size: 1.4rem;
       font-style: regular;
       font-weight: 400;
+
+      height: 100%;
 
       display: flex;
       align-items: center;
@@ -71,5 +82,24 @@ export const ContainerHeader = styled.div`
 
   @media (max-width: 1200px) {
     padding: 3.2rem 6rem;
+  }
+
+  @media (max-width: 700px) {
+    padding: 3.2rem 4rem;
+  }
+
+  @media (max-width: 500px) {
+    nav {
+      > button {
+        position: absolute;
+        top: 8rem;
+        left: 3.2rem;
+
+        background: none;
+
+        max-width: 50%;
+        height: auto;
+      }
+    }
   }
 `
