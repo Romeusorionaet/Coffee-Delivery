@@ -68,4 +68,8 @@ export const ContainerHeader = styled.div`
       }
     }
   }
+
+  @media (max-width: 1200px) {
+    padding: 3.2rem 6rem;
+  }
 `

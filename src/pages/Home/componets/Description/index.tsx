@@ -36,7 +36,9 @@ export function Description() {
         </div>
       </div>
 
-      <img src={logoCoffeeDescription} alt="" />
+      <div className="wrapper_img">
+        <img src={logoCoffeeDescription} alt="" />
+      </div>
     </PageDescriptionContainer>
   )
 }

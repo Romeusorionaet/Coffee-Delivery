@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const MenuCoffeeContainer = styled.main`
-  margin: 12rem 16rem;
+  padding: 2rem 16rem;
 
   display: flex;
   flex-wrap: wrap;
@@ -20,5 +20,9 @@ export const MenuCoffeeContainer = styled.main`
   }
 
   > div {
+  }
+
+  @media (max-width: 1200px) {
+    padding: 2rem 6rem;
   }
 `

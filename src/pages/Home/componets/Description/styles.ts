@@ -51,4 +51,63 @@ export const PageDescriptionContainer = styled.div`
       }
     }
   }
+
+  .wrapper_img {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+
+    img {
+      width: clamp(30rem, calc(47vw + 6rem), 50rem);
+    }
+  }
+
+  @media (max-width: 1200px) {
+    margin: 10rem 6rem;
+  }
+
+  @media (max-width: 1000px) {
+    position: relative;
+    justify-content: center;
+
+    margin: 20rem 6rem 8rem;
+
+    .wrapper {
+      padding: 1rem;
+
+      h1 {
+        line-height: 4.2rem;
+        font-size: clamp(1.8rem, calc(2vw + 1.8rem), 4.8rem);
+      }
+
+      p {
+        font-size: clamp(1.6rem, calc(2vw - 1rem), 2rem);
+      }
+
+      background-image: linear-gradient(
+        ${(props) => props.theme['white-200']} 0%,
+        transparent
+      );
+      opacity: 0.9;
+    }
+
+    .wrapper_img {
+      position: absolute;
+      top: -20rem;
+
+      z-index: -1;
+
+      animation: moveUpDown 4s ease-in-out;
+    }
+
+    @keyframes moveUpDown {
+      0%,
+      100% {
+        transform: translateY(0%);
+      }
+      50% {
+        transform: translateY(-8rem);
+      }
+    }
+  }
 `
