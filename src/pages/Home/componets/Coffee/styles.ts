@@ -103,9 +103,11 @@ export const Controll = styled.div`
     border-radius: 6px;
 
     height: 3.8rem;
+    width: 8.6rem;
 
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
 
     button {

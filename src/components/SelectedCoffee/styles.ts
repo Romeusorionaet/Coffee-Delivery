@@ -21,6 +21,9 @@ export const SelectedCoffeecontainer = styled.div`
     }
 
     > span {
+      display: block;
+      width: 8rem;
+
       font-size: 1.4rem;
       font-weight: 700;
       font-style: bold;
@@ -69,9 +72,11 @@ export const ButtonController = styled.div`
       border-radius: 6px;
 
       height: 3.2rem;
+      width: 10rem;
 
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 1rem;
 
       button {

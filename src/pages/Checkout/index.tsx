@@ -1,9 +1,11 @@
 import { MapPinLine } from 'phosphor-react'
 import { Aside } from '../../components/Aside'
 import { PaymentOptions } from './components/PaymentOptions'
-import { CheckoutContainer, HeaderForm, InputsContainer } from './styles'
+
 import React, { useContext } from 'react'
 import { AddressContext } from '../../contexts/AddressFormContext'
+
+import { CheckoutContainer, HeaderForm, InputsContainer } from './styles'
 
 export function Checkout() {
   const {
@@ -54,14 +56,14 @@ export function Checkout() {
         <InputsContainer>
           <input
             type="number"
+            name="CEP"
             onBlur={handleBlur}
-            maxLength={9}
             placeholder="CEP"
             onChange={(e) => setCep(Number(e.target.value))}
           />
           <input
             type="text"
-            maxLength={30}
+            name="street"
             placeholder="Rua"
             onChange={(e) => setStreet(e.target.value)}
           />
@@ -69,24 +71,28 @@ export function Checkout() {
           <div>
             <input
               type="number"
+              name="number"
               maxLength={10}
               placeholder="Número"
               onChange={(e) => setNumber(Number(e.target.value))}
             />
             <input
               type="text"
+              name="complement"
               maxLength={30}
               placeholder="Complemento: opcional"
               onChange={(e) => setComplement(e.target.value)}
             />
             <input
               type="text"
+              name="neighborhood"
               maxLength={30}
               placeholder="Bairro"
               onChange={(e) => setNeighborhood(e.target.value)}
             />
             <input
               type="text"
+              name="city"
               value={city}
               maxLength={30}
               placeholder="Cidade"
@@ -94,7 +100,7 @@ export function Checkout() {
             />
             <input
               type="text"
-              name="nome"
+              name="UF"
               maxLength={2}
               placeholder="UF"
               onChange={(e) => setUf(e.target.value)}
