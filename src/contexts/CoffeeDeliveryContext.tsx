@@ -1,4 +1,12 @@
 import { ReactNode, createContext, useReducer } from 'react'
+import { orderCoffeeReducer } from '../reducers/orderCoffe/reducer'
+import {
+  addNewCoffeeAction,
+  cleanCartAction,
+  decrementCoffeeAction,
+  incrementCoffeeAction,
+  removeCoffeeFromCartAction,
+} from '../reducers/orderCoffe/actions'
 
 interface CoffeeContextProviderProps {
   children: ReactNode
@@ -21,8 +29,9 @@ export interface CoffeeProps {
 
 interface CoffeContextType {
   addCoffeeToCart: (coffee: CoffeeProps) => void
-  removeCoffeeFromCart: (id: number) => void
+  handleRemoveCoffeeFromCart: (id: number) => void
   orderCoffee: CoffeeProps[]
+  autoCleanCart: () => void
 
   handleMoreCoffee: (id: number) => void
   handleLessCoffee: (id: number) => void
@@ -34,107 +43,8 @@ export function CoffeeDeliveryContext({
   children,
 }: CoffeeContextProviderProps) {
   const [orderCoffee, dispatch] = useReducer(
-    (state: CoffeeProps[], action: any) => {
-      if (action.type === 'ADD_NEW_COFFEE') {
-        const { id, coffeeQuantity } = action.payload.data
+    orderCoffeeReducer,
 
-        const existingCoffee = state.findIndex((item) => item.id === id)
-
-        if (existingCoffee !== -1) {
-          const updatedCoffee = {
-            ...state[existingCoffee],
-            coffeeQuantity:
-              state[existingCoffee].coffeeQuantity + coffeeQuantity,
-          }
-
-          const updatedOrderCoffee = [...state]
-          updatedOrderCoffee[existingCoffee] = updatedCoffee
-
-          localStorage.setItem(
-            '@coffeeDeliveryCart-1.0',
-            JSON.stringify(updatedOrderCoffee),
-          )
-
-          return updatedOrderCoffee
-        } else {
-          localStorage.setItem(
-            '@coffeeDeliveryCart-1.0',
-            JSON.stringify([...state, action.payload.data]),
-          )
-          return [...state, action.payload.data]
-        }
-      }
-
-      if (action.type === 'REMOVE_COFFEE_FROM_CART') {
-        const { id } = action.payload.data
-
-        const listOfCoffeeWithoutDeleteOne = state.filter((item) => {
-          return item.id !== id
-        })
-
-        localStorage.setItem(
-          '@coffeeDeliveryCart-1.0',
-          JSON.stringify(listOfCoffeeWithoutDeleteOne),
-        )
-
-        return listOfCoffeeWithoutDeleteOne
-      }
-
-      if (action.type === 'INCREMENT') {
-        const { id } = action.payload.data
-
-        const coffeeFound = state.findIndex((item) => item.id === id)
-
-        if (coffeeFound !== -1) {
-          const updatedCoffeeQuantity = {
-            ...state[coffeeFound],
-            coffeeQuantity: state[coffeeFound].coffeeQuantity + 1,
-          }
-
-          const newQuantityOfCoffee = [...state]
-          newQuantityOfCoffee[coffeeFound] = updatedCoffeeQuantity
-
-          localStorage.setItem(
-            '@coffeeDeliveryCart-1.0',
-            JSON.stringify(newQuantityOfCoffee),
-          )
-
-          return newQuantityOfCoffee
-        } else {
-          return [...state, action.payload.data]
-        }
-      }
-
-      if (action.type === 'DECREMENT') {
-        const { id } = action.payload.data
-
-        const coffeeFound = state.findIndex((item) => item.id === id)
-
-        if (coffeeFound !== -1) {
-          const updatedCoffeeQuantity = {
-            ...state[coffeeFound],
-            coffeeQuantity:
-              state[coffeeFound].coffeeQuantity > 1
-                ? state[coffeeFound].coffeeQuantity - 1
-                : state[coffeeFound].coffeeQuantity,
-          }
-
-          const newQuantityOfCoffee = [...state]
-          newQuantityOfCoffee[coffeeFound] = updatedCoffeeQuantity
-
-          localStorage.setItem(
-            '@coffeeDeliveryCart-1.0',
-            JSON.stringify(newQuantityOfCoffee),
-          )
-
-          return newQuantityOfCoffee
-        } else {
-          return [...state, action.payload.data]
-        }
-      }
-
-      return state
-    },
     localStorage.getItem('@coffeeDeliveryCart-1.0')
       ? JSON.parse(localStorage.getItem('@coffeeDeliveryCart-1.0')!)
       : [],
@@ -149,39 +59,33 @@ export function CoffeeDeliveryContext({
     category,
     coffeeQuantity,
   }: CoffeeProps) {
-    dispatch({
-      type: 'ADD_NEW_COFFEE',
-      payload: {
-        data: { id, img, title, description, price, category, coffeeQuantity },
-      },
-    })
+    dispatch(
+      addNewCoffeeAction({
+        id,
+        title,
+        img,
+        description,
+        price,
+        category,
+        coffeeQuantity,
+      }),
+    )
   }
 
-  function removeCoffeeFromCart(id: number) {
-    dispatch({
-      type: 'REMOVE_COFFEE_FROM_CART',
-      payload: {
-        data: { id },
-      },
-    })
+  function handleRemoveCoffeeFromCart(id: number) {
+    dispatch(removeCoffeeFromCartAction(id))
   }
 
   function handleMoreCoffee(id: number) {
-    dispatch({
-      type: 'INCREMENT',
-      payload: {
-        data: { id },
-      },
-    })
+    dispatch(incrementCoffeeAction(id))
   }
 
   function handleLessCoffee(id: number) {
-    dispatch({
-      type: 'DECREMENT',
-      payload: {
-        data: { id },
-      },
-    })
+    dispatch(decrementCoffeeAction(id))
+  }
+
+  function autoCleanCart() {
+    dispatch(cleanCartAction())
   }
 
   return (
@@ -189,9 +93,10 @@ export function CoffeeDeliveryContext({
       value={{
         addCoffeeToCart,
         orderCoffee,
-        removeCoffeeFromCart,
+        handleRemoveCoffeeFromCart,
         handleMoreCoffee,
         handleLessCoffee,
+        autoCleanCart,
       }}
     >
       {children}

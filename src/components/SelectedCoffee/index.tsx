@@ -6,7 +6,7 @@ import { Minus, Plus, Trash } from 'phosphor-react'
 export function SelectedCoffee() {
   const {
     orderCoffee,
-    removeCoffeeFromCart,
+    handleRemoveCoffeeFromCart,
     handleLessCoffee,
     handleMoreCoffee,
   } = useContext(CoffeeOfContext)
@@ -36,7 +36,7 @@ export function SelectedCoffee() {
                     </button>
                   </div>
 
-                  <button onClick={() => removeCoffeeFromCart(item.id)}>
+                  <button onClick={() => handleRemoveCoffeeFromCart(item.id)}>
                     <Trash size={14} /> <span>Remover</span>
                   </button>
                 </div>

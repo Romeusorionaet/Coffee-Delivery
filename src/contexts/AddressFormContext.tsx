@@ -1,4 +1,10 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react'
+import React, {
+  ReactNode,
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from 'react'
 import { CoffeeOfContext, CoffeeProps } from './CoffeeDeliveryContext'
 import { useNavigate } from 'react-router-dom'
 
@@ -31,7 +37,6 @@ interface AddressFormContextType {
   city: string
   uf: string
   street: string
-  dataForm: AddressFormProps[]
 }
 
 export const AddressContext = createContext({} as AddressFormContextType)
@@ -50,7 +55,7 @@ export function AddressFormContext({
 
   const [dataForm, setDataForm] = useState<AddressFormProps[]>([]) // dataForm returns an object that is the final result of the user's request
 
-  const { orderCoffee } = useContext(CoffeeOfContext)
+  const { orderCoffee, autoCleanCart } = useContext(CoffeeOfContext)
 
   const navigate = useNavigate()
 
@@ -80,9 +85,19 @@ export function AddressFormContext({
           orderCoffee,
         },
       ])
+      autoCleanCart()
       navigate('/Success')
     }
   }
+
+  useEffect(() => {
+    if (dataForm.length !== 0) {
+      localStorage.setItem(
+        '@coffeeDeliveryFormUser-1.0',
+        JSON.stringify(dataForm),
+      )
+    }
+  }, [dataForm])
 
   return (
     <AddressContext.Provider
@@ -99,7 +114,6 @@ export function AddressFormContext({
         city,
         uf,
         street,
-        dataForm,
       }}
     >
       {children}

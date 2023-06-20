@@ -4,11 +4,12 @@ import sifrao from '../../assets/tags/sifrao.svg'
 import motoBoy from '../../assets/motoBoy.svg'
 
 import { SucessContainer, SectionDescription } from './styles'
-import { useContext } from 'react'
-import { AddressContext } from '../../contexts/AddressFormContext'
+import { AddressFormProps } from '../../contexts/AddressFormContext'
 
 export function Success() {
-  const { dataForm } = useContext(AddressContext)
+  const dataFormUser = localStorage.getItem('@coffeeDeliveryFormUser-1.0')
+  const parsedDataFormUser =
+    dataFormUser !== null ? JSON.parse(dataFormUser) : null
 
   return (
     <SucessContainer>
@@ -18,8 +19,8 @@ export function Success() {
       </div>
 
       <SectionDescription>
-        {dataForm &&
-          dataForm.map((data) => {
+        {parsedDataFormUser &&
+          parsedDataFormUser.map((data: AddressFormProps) => {
             return (
               <div key={data.number}>
                 <div className="background">
