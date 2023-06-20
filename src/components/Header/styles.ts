@@ -5,9 +5,9 @@ export const ContainerHeader = styled.div`
   justify-content: space-between;
 
   padding: 4rem 16rem;
-  border-bottom: solid 2px ${(props) => props.theme['gray-100']};
 
   z-index: 2;
+  border-bottom: solid 1px ${(props) => props.theme['white-500']};
 
   background-color: ${(props) => props.theme['white-200']};
   position: fixed;
@@ -89,6 +89,8 @@ export const ContainerHeader = styled.div`
   }
 
   @media (max-width: 500px) {
+    border-bottom: double 8px ${(props) => props.theme['gray-100']};
+
     nav {
       > button {
         position: absolute;

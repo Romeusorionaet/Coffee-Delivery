@@ -44,7 +44,10 @@ export function Coffee({
     <CoffeeContainer>
       <WrapperText>
         <div className="imagem">
-          <img src={img} alt="" />
+          <img
+            src={img}
+            alt={`Uma Xicara em cima de um pires, representando o café ${title}`}
+          />
         </div>
         {category.map((item) => (
           <span key={item.id}>{item.tag}</span>

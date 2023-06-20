@@ -4,13 +4,18 @@ interface CoffeeContextProviderProps {
   children: ReactNode
 }
 
+interface CategpryProps {
+  tag: string
+  id: string
+}
+
 export interface CoffeeProps {
   id: number
   img: string
   title: string
   description: string
   price: number
-  category: [{ tag: string; id: string }]
+  category: CategpryProps[]
   coffeeQuantity: number
 }
 

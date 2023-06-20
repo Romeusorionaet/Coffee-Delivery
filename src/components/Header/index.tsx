@@ -22,7 +22,7 @@ export function Header() {
     }
   }
 
-  function teste() {
+  function CheckIfTheCartIsEmpty() {
     if (orderCoffee.length === 0) {
       return alert('Carrinho vazio!')
     }
@@ -48,7 +48,7 @@ export function Header() {
         </button>
 
         <NavLink to={orderCoffee.length === 0 ? '#' : '/checkout'}>
-          <div onClick={teste} className="wrapper">
+          <div onClick={CheckIfTheCartIsEmpty} className="wrapper">
             <ShoppingCart size={32} weight="fill" />
             {orderCoffee.length === 0 ? (
               <></>

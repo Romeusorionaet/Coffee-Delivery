@@ -25,7 +25,10 @@ export function Success() {
                 <div className="background">
                   <div className="wrapper">
                     <div>
-                      <img src={localMap} alt="" />
+                      <img
+                        src={localMap}
+                        alt="Símbolo do mapa, representa o local"
+                      />
                       <p>
                         Entrega em{' '}
                         <strong>
@@ -35,20 +38,26 @@ export function Success() {
                       </p>
                     </div>
                     <div>
-                      <img src={watch} alt="" />
+                      <img src={watch} alt="Desenho de um relógio de bolso" />
                       <p>
                         Previsão de entrega <strong>20 min - 30 min</strong>
                       </p>
                     </div>
                     <div>
-                      <img src={sifrao} alt="" />
+                      <img
+                        src={sifrao}
+                        alt="Símbolo do sifrão, representa dinheiro"
+                      />
                       <p>
                         Pagamento na entrega <strong>{data.payment}</strong>
                       </p>
                     </div>
                   </div>
                 </div>
-                <img src={motoBoy} alt="" />
+                <img
+                  src={motoBoy}
+                  alt="Representação de um jovem trabalhador indo fazer a entrega do produto em uma moto roxa, com sua maleta no bagageiro"
+                />
               </div>
             )
           })}

@@ -37,7 +37,10 @@ export function Description() {
       </div>
 
       <div className="wrapper_img">
-        <img src={logoCoffeeDescription} alt="" />
+        <img
+          src={logoCoffeeDescription}
+          alt="Um cartoon representando com mais detalhes o logotipo, com um copo de cores preto e branco com sua tampa preta e por volta tem as sementes do café em um background amarelado"
+        />
       </div>
     </PageDescriptionContainer>
   )

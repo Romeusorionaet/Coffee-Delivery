@@ -17,7 +17,10 @@ export function SelectedCoffee() {
         orderCoffee.map((item) => {
           return (
             <div key={item.id}>
-              <img src={item.img} alt="" />
+              <img
+                src={item.img}
+                alt={`Uma Xicara de café em cima de um pires, representando o café ${item.title}`}
+              />
 
               <ButtonController>
                 <h3>{item.title}</h3>

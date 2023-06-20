@@ -17,7 +17,7 @@ export function Checkout() {
     city,
   } = useContext(AddressContext)
 
-  function preencherCidadePorCEP(cep: string): void {
+  function fillCityByZipCode(cep: string): void {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then((response) => response.json())
       .then((data) => {
@@ -35,7 +35,7 @@ export function Checkout() {
   function handleBlur(event: React.FocusEvent<HTMLInputElement>): void {
     const cep = event.target.value.replace(/\D/g, '')
     if (cep.length === 8) {
-      preencherCidadePorCEP(cep)
+      fillCityByZipCode(cep)
     }
   }
 
@@ -55,11 +55,13 @@ export function Checkout() {
           <input
             type="number"
             onBlur={handleBlur}
+            maxLength={9}
             placeholder="CEP"
             onChange={(e) => setCep(Number(e.target.value))}
           />
           <input
             type="text"
+            maxLength={30}
             placeholder="Rua"
             onChange={(e) => setStreet(e.target.value)}
           />
@@ -67,22 +69,26 @@ export function Checkout() {
           <div>
             <input
               type="number"
+              maxLength={10}
               placeholder="Número"
               onChange={(e) => setNumber(Number(e.target.value))}
             />
             <input
               type="text"
+              maxLength={30}
               placeholder="Complemento: opcional"
               onChange={(e) => setComplement(e.target.value)}
             />
             <input
               type="text"
+              maxLength={30}
               placeholder="Bairro"
               onChange={(e) => setNeighborhood(e.target.value)}
             />
             <input
               type="text"
               value={city}
+              maxLength={30}
               placeholder="Cidade"
               onChange={(e) => setCity(e.target.value)}
             />

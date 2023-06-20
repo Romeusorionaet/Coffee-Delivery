@@ -16,6 +16,10 @@ import Mocaccino from '../assets/coffee/Mocaccino.svg'
 
 import { v4 as uuidv4 } from 'uuid'
 
+/* listOfAllCoffee has a fixed id because for now this project is saving users' requests to localStorage. 
+If you use uuidv4() as the coffee id, when users add coffee to their cart and reload the page, 
+uuidv4() will change, changing and duplicating the coffee in localstorage. */
+
 export const listOfAllCoffee = [
 
 {
