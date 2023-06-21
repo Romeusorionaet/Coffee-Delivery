@@ -42,7 +42,7 @@ export function SelectedCoffee() {
                 </div>
               </ButtonController>
 
-              <span>R$ {item.price * item.coffeeQuantity}</span>
+              <span>R$ {(item.price * item.coffeeQuantity).toFixed(2)}</span>
             </div>
           )
         })}
