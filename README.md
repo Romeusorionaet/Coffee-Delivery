@@ -1,6 +1,6 @@
 <h1>Coffee Delivery</h1>
 
-[☕☕Café](https://coffee-delivery-amber-phi.vercel.app)
+<a href="https://coffee-delivery-amber-phi.vercel.app" target="blank">☕Café</a>
 
 <p>
 Bem-vindo(a) ao nosso incrível mundo do café! Aqui você descobrirá uma ampla variedade de café, cuidadosamente selecionados para garantir uma experiência de qualidade incomparável. De clássicos expressos tradicionais a joias raras como o Café Cubano, que é o queridinho de todos, temos algo para agradar até mesmo os paladares mais exigentes.
