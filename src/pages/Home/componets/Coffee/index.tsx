@@ -49,9 +49,11 @@ export function Coffee({
             alt={`Uma Xicara em cima de um pires, representando o café ${title}`}
           />
         </div>
-        {category.map((item) => (
-          <span key={item.id}>{item.tag}</span>
-        ))}
+        <div className="wrapper_tag">
+          {category.map((item) => (
+            <span key={item.id}>{item.tag}</span>
+          ))}
+        </div>
         <h3>{title}</h3>
         <p>{description}</p>
       </WrapperText>

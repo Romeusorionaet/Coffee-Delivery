@@ -23,6 +23,20 @@ export const WrapperText = styled.div`
 
   margin-top: -2rem;
 
+  .wrapper_tag {
+    display: flex;
+    gap: 0.8rem;
+
+    span {
+      background-color: ${(props) => props.theme['yellow-100']};
+      color: ${(props) => props.theme['gray-200']};
+      padding: 0.5rem;
+
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+  }
+
   .imagem {
     width: 12rem;
     height: 12rem;
