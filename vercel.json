@@ -10,7 +10,8 @@
         ]
       },
       {
-        "source": "/(.*)",
+        "source": "https://coffee-delivery-amber-phi.vercel.app",
+        "destination": "/src/main.tsx",
         "headers": [
           { "key": "Access-Control-Allow-Credentials", "value": "true" },
           { "key": "Access-Control-Allow-Origin", "value": "*" },
